@@ -67,8 +67,8 @@ client_socket.close()
 
 **Сервер**
 
-![1](../img/1.png)
+![1](../img/lab_1/task_1_1.png)
 
 **Клиент**
 
-![2](../img/2.png)
+![2](../img/lab_1/task_1_2.png)

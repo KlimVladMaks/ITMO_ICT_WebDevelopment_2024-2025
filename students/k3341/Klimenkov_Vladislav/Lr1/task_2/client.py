@@ -2,6 +2,9 @@ import socket
 
 
 def get_user_input():
+    """
+    Функция для запроса у пользователя данных трапеции.
+    """
     print("Введите параметры трапеции:")
     try:
         a = float(input("Длина первого основания (a): "))
@@ -14,7 +17,12 @@ def get_user_input():
 
 
 def send_request(server_address, data, timeout=5.0):
+    """
+    Функция для отправки запроса на сервер и получения ответа.
+    """
     try:
+        # Устанавливаем соединение с сервером, отправляем запрос и получаем ответ
+        # (Также используем timeout для ограничения времени ожидания соединения)
         with socket.create_connection(server_address, timeout=timeout) as s:
             s.sendall(data.encode())
             resp = s.recv(1024).decode(errors='replace')
@@ -27,6 +35,8 @@ def main():
     server_address = ('localhost', 8080)
 
     try:
+        # Цикл взаимодействия клиента с пользователем
+        # (Запросить данные, отправить серверу, получить и вывести ответ)
         while True:
             data = get_user_input()
             if data is None:
@@ -42,8 +52,6 @@ def main():
                 break
             print()
     
-    except KeyboardInterrupt:
-        print("\nКлиент остановлен")
     except Exception as e:
         print(f"\nВозникла ошибка: {e}")
 
